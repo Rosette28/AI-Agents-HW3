@@ -205,19 +205,21 @@ Document includes:
 
 ---
 
-## Task 1.10 — Write `PRD_crewai_latex.md`
+## Task 1.10 — Write 4 specific mechanisms PRDs
 
 **Priority:** Medium
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
-Workflow explicitly documents:
+The files: 
+- PRD_api_gatekeeper.md
+- PRD_lualatex_bidi_compiler.md
+- PRD_markdown_parser.md
+- PRD_crew_orchestration.md
 
-* Markdown generation
-* LuaLaTeX compilation
-* BiDi rendering pipeline
+are created and populated
 
 ---
 
