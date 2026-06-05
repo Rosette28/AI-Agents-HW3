@@ -1,0 +1,6 @@
+{
+    "version": "1.00",
+    "requests_per_minute": 30,
+    "requests_per_hour": 500,
+    "max_retries": 3
+}
