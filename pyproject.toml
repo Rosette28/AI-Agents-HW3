@@ -10,16 +10,16 @@ requires-python = ">=3.10"
 dependencies = []
 
 [tool.ruff]
-# Ruff configuration
 line-length = 100
 target-version = "py310"
 
 [tool.ruff.lint]
-# Targeting 0 violations (select all) and ignoring E501
 select = ["ALL"]
 ignore = ["E501"]
 
 [tool.pytest.ini_options]
-# pytest-cov settings to fail under 85% coverage
 addopts = "--cov=. --cov-fail-under=85"
 testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
