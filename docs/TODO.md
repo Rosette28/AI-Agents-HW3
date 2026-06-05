@@ -235,7 +235,7 @@ All JSON configurations are parsed securely, and the API Gatekeeper is built to 
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -253,7 +253,7 @@ File exists:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -269,7 +269,7 @@ Configuration contains:
 
 **Priority:** Low
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
