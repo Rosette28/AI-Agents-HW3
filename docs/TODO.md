@@ -291,7 +291,7 @@ VERSION = "1.00"
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -307,7 +307,7 @@ Parser:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -325,7 +325,7 @@ No hardcoded credentials.
 
 **Priority:** Critical
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -341,7 +341,7 @@ Gatekeeper:
 
 **Priority:** Critical
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -365,7 +365,7 @@ CrewAI dependencies are installed and specialized agents are built with tools ro
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -382,7 +382,7 @@ uv add langchain-community
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -398,7 +398,7 @@ Tool implemented using CrewAI:
 
 **Priority:** Critical
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -414,7 +414,7 @@ ApiGatekeeper
 
 **Priority:** Medium
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -431,7 +431,7 @@ Agent includes:
 
 **Priority:** Medium
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -447,7 +447,7 @@ Agent generates:
 
 **Priority:** Medium
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -463,7 +463,7 @@ Agent verifies:
 
 **Priority:** Low
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
