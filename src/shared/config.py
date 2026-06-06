@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 
-__version__ = "1.00"
+VERSION = "1.00"
 
 
 class ConfigError(Exception):
