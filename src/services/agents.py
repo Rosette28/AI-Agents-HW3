@@ -8,7 +8,7 @@ from src.services.tools import web_search_tool
 load_dotenv()
 
 gemini_llm = LLM(
-    model="gemini/gemini-1.5-pro",
+    model="gemini/gemini-2.5-flash",
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
