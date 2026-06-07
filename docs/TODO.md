@@ -634,7 +634,7 @@ All external graphical assets and the responsive, BiDi-capable LuaLaTeX skeleton
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -654,7 +654,7 @@ Fields support conditional rendering.
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -670,7 +670,7 @@ Injection layer:
 
 **Priority:** Critical
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -687,7 +687,7 @@ Preamble supports:
 
 **Priority:** Medium
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -704,7 +704,7 @@ Additional graphics packages validated.
 
 **Priority:** Low
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
