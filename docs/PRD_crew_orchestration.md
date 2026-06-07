@@ -8,12 +8,11 @@ The orchestration mechanism manages the lifecycle, state, and data-passing betwe
 * **Output:** A final, fact-checked, and formatted Markdown string containing the text of a ~15-page article.
 
 ## 3. Constraints, Alternatives, and Rationale (ADR)
-* **Constraint:** The agents must not enter infinite loops (hallucination loops) and must reliably produce content that spans approximately 15 pages in length.
-* **Alternative 1: `Process.hierarchical`.** Appoint a "Manager" agent to dynamically delegate tasks to the Researcher, Writer, and Editor. *Rejected* because hierarchical processes consume significantly more API tokens (costing more money) and can lead to unpredictable document structures that break LaTeX compilation.
-* **Selected Architecture: `Process.sequential` with Strict Context Passing.** Tasks are hardcoded in a strict 1-2-3 pipeline. 
-  * Task 1 (Research) passes its output explicitly to Task 2 via the `context` parameter.
-  * Task 2 (Writer) receives the facts and the `language` requirement, outputting structured Markdown.
-  * Task 3 (Editor) receives the draft, checks for hallucinations against Task 1's facts, and ensures LaTeX structural readiness.
+* **Constraint:** The agents must reliably produce ~15 pages of content, generate their own contextual graphs, parse real web citations, and perfectly format bilingual BiDi chapters and TikZ diagrams.
+* **Alternative 1: Prompt Engineering Only.** *Rejected*. Relying solely on the `system_prompt` causes the LLM to hallucinate LaTeX syntax and fail volumetric requirements (writing short summaries instead of long chapters).
+* **Selected Architecture: `Process.sequential` with Dynamic Tools & Injected Skills.** * **Dynamic Tools:** Agents are provided with Python-execution tools to autonomously write to `biblio.bib` and generate `.png` graphs via Matplotlib.
+  * **Injected Skills:** The Editor agent is programmatically injected with `skills/SKILL.md` (adhering to Appendix A workflows). This separates its functional "hands" (Tools) from its academic "mind" (Skills).
+  * **Task Looping/Forcing:** The writing task explicitly demands exhaustive multi-chapter output to force the LLM to hit the 15-page volumetric requirement.
 
 ## 4. Test Scenarios & Acceptance Criteria
 * **Scenario A (Language Adherence):** Pass `language="bidi"`.

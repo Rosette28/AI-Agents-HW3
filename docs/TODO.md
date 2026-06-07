@@ -485,7 +485,7 @@ The Crew is orchestrated, and the centralized SDK serves as the sole entry point
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -502,7 +502,7 @@ Input variables.
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -518,7 +518,7 @@ Task:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -533,7 +533,7 @@ Task:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -549,7 +549,7 @@ Crew:
 
 **Priority:** Critical
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -565,7 +565,7 @@ SDK:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -581,7 +581,7 @@ SDK:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -600,7 +600,7 @@ User is prompted for:
 
 **Priority:** Critical
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -608,7 +608,6 @@ Validated user input successfully reaches SDK execution layer.
 
 ---
 
-````md
 # Phase 5: Visuals & LaTeX Asset Preparation
 
 **Milestone**
@@ -617,21 +616,17 @@ All external graphical assets and the responsive, BiDi-capable LuaLaTeX skeleton
 
 ---
 
-## Task 5.1 — Generate Token Cost Graph
+## Task 5.1 — Define Agent Skills (`SKILL.md`)
 
-**Priority:** Medium  
+**Priority:** High  
 **Assignee:** Partner 1  
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
-- Matplotlib script created
-- Graph generated
-- Output saved as:
-
-```text
-assets/graph.png
-````
+- Created `skills/SKILL.md` (per Appendix A guidelines)
+- Document contains strict LaTeX formatting rules
+- Document contains BiDi, Math, and TikZ layout guidelines
 
 ---
 
@@ -722,24 +717,16 @@ Document includes:
 
 ---
 
-## Task 5.5 — Prepare Bibliography File
+## Task 5.5 — Initialize Empty Bibliography for Dynamic Injection
 
-**Priority:** Low
-**Assignee:** Partner 1
-**Status:** Not Started
+**Priority:** High  
+**Assignee:** Partner 1  
+**Status:** Done
 
 ### Definition of Done
 
-Created:
-
-```text
-biblio.bib
-```
-
-Contains:
-
-* Minimum 3 academic references
-* Valid BibTeX formatting
+- Created a completely blank `biblio.bib` file
+- Ensured file is ready to receive dynamic programmatic appends from the Researcher's `append_bibtex_tool`.
 
 ---
 
@@ -1023,25 +1010,18 @@ Stored as Markdown.
 
 ---
 
-## Task 8.2 — Generate Analysis Notebook
+## Task 8.2 — Execute Parameter Sensitivity Analysis
 
-**Priority:** Medium
-**Assignee:** Partner 2
+**Priority:** High  
+**Assignee:** Partner 2  
 **Status:** Not Started
 
 ### Definition of Done
 
-Created:
-
-```text
-notebooks/analysis.ipynb
-```
-
-Notebook includes:
-
-* Runtime metrics
-* Latency analysis
-* Seaborn heatmap
+- Created `src/scripts/sensitivity_analysis.py`
+- Script tests multiple controlled parameter changes (e.g., LLM temperature variations).
+- Latency and performance are tracked and plotted.
+- Output graph saved automatically.
 
 ---
 
