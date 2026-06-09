@@ -27,6 +27,10 @@ ignore = ["E501"]
 addopts = "--cov=. --cov-fail-under=85"
 testpaths = ["tests"]
 
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
 
