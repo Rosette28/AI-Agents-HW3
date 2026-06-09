@@ -30,7 +30,7 @@ def create_writing_task(agent, research_task):
 def create_review_task(agent, writing_task):
     return Task(
         description=(
-            "Review the manuscript. Ensure the \includegraphics for the graph is present. "
+            "Review the manuscript. Ensure the \\includegraphics for the graph is present. "
             "Verify the TikZ syntax, the math formula, and ensure the BiDi Hebrew chapter is formatted correctly "
             "according to your injected SKILL.md guidelines."
         ),

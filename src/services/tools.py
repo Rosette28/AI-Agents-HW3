@@ -52,4 +52,4 @@ def append_bibtex_tool(citation_id: str, title: str, author: str, year: str, url
 """
     with open("biblio.bib", "a", encoding="utf-8") as f:
         f.write(bibtex_entry)
-    return f"Source {citation_id} added to bibliography. Cite it using \cite{{{citation_id}}}."
+    return f"Source {citation_id} added to bibliography. Cite it using \\cite{{{citation_id}}}."
