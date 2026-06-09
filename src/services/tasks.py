@@ -1,33 +1,38 @@
-from crewai import Task
+"""Task definition module."""
+from crewai import Agent, Task
 
-def create_research_task(agent):
+
+def create_research_task(agent: Agent) -> Task:
+    """Create the task for gathering research and facts."""
     return Task(
         description=(
             "Research '{topic}'. Find at least 3 distinct, credible sources. "
             "CRITICAL: You MUST use the 'BibTeX Appender' tool to save each source to the bibliography."
         ),
         expected_output="A detailed research document with saved BibTeX citations.",
-        agent=agent
+        agent=agent,
     )
 
-def create_writing_task(agent, research_task):
+def create_writing_task(agent: Agent, research_task: Task) -> Task:
+    """Create the task for drafting the academic article."""
     return Task(
         description=(
             "Using the research, write an exhaustive, highly detailed academic book on '{topic}'. "
             "To meet the 15-page requirement, you must write at least 6 long chapters. "
             "CRITICAL REQUIREMENTS: "
             "1. Use the 'Dynamic Graph Generator' tool to create a graph based on your data. "
-            "2. Include a native LaTeX TikZ block diagram (`\\begin{{tikzpicture}}`). "
+            "2. Include a native LaTeX TikZ block diagram (`\\begin{tikzpicture}`). "
             "3. Include a formatted data table. "
-            "4. Include a complex 'fancy formula' using `\\begin{{equation}}`. "
+            "4. Include a complex 'fancy formula' using `\\begin{equation}`. "
             "5. CRITICAL: Write exactly ONE dedicated chapter that smoothly blends Hebrew and English (BiDi) to demonstrate RTL/LTR transitions."
         ),
         expected_output="A massive, highly detailed Markdown/LaTeX manuscript containing a graph, TikZ diagram, math, and a bilingual Hebrew/English chapter.",
         agent=agent,
-        context=[research_task]
+        context=[research_task],
     )
 
-def create_review_task(agent, writing_task):
+def create_review_task(agent: Agent, writing_task: Task) -> Task:
+    """Create the task for reviewing and formatting the text."""
     return Task(
         description=(
             "Review the manuscript. Ensure the \\includegraphics for the graph is present. "
@@ -36,5 +41,5 @@ def create_review_task(agent, writing_task):
         ),
         expected_output="The final, flawless LaTeX-ready text string.",
         agent=agent,
-        context=[writing_task]
+        context=[writing_task],
     )

@@ -5,30 +5,30 @@ def main():
     topic = input("Enter topic: ")
 
     language = input(
-        "Enter language (english/bidi): "
+        "Enter language (english/bidi): ",
     ).strip().lower()
 
     author = input(
-        "Author (optional): "
+        "Author (optional): ",
     ).strip()
 
     date = input(
-        "Date (optional): "
+        "Date (optional): ",
     ).strip()
 
     course = input(
-        "Course (optional): "
+        "Course (optional): ",
     ).strip()
 
     lecturer = input(
-        "Lecturer (optional): "
+        "Lecturer (optional): ",
     ).strip()
 
     cover_sheet = {
         "author": author,
         "date": date,
         "course": course,
-        "lecturer": lecturer
+        "lecturer": lecturer,
     }
 
     sdk = CrewPipelineSDK()
@@ -36,7 +36,7 @@ def main():
     result = sdk.run(
         topic=topic,
         language=language,
-        cover_sheet=cover_sheet
+        cover_sheet=cover_sheet,
     )
 
     print("\nGenerated Output:\n")

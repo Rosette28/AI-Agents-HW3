@@ -13,6 +13,10 @@ dependencies = [
     "jinja2>=3.1.6",
     "langchain-community>=0.4.2",
     "matplotlib>=3.10.9",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "pytest-mock>=3.15.1",
+    "ruff>=0.15.16",
 ]
 
 [tool.ruff]
@@ -39,3 +43,13 @@ dev = [
     "pytest>=9.0.3",
     "pytest-cov>=7.1.0",
 ]
+
+[tool.ruff.lint.per-file-ignores]
+# Allow print statements in the CLI entry point
+"src/main.py" = ["T201", "D", "ANN"]
+"src/constants.py" = ["D"]
+"src/services/latex_builder.py" = ["D", "W"]
+"src/services/agents.py" = ["D", "ANN"]
+"src/sdk/sdk.py" = ["D", "ANN"]
+# Standard test ignores: Asserts (S101), Docstrings (D), Annotations (ANN)
+"tests/*" = ["S101", "D", "ANN", "PLR", "TRY", "EM", "PTH"]

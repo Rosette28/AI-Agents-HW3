@@ -1,5 +1,4 @@
-from unittest.mock import MagicMock
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from src.sdk.sdk import CrewPipelineSDK
 
@@ -18,7 +17,7 @@ def test_sdk_run(
     mock_research_task,
     mock_writing_task,
     mock_review_task,
-    mock_crew
+    mock_crew,
 ):
     mock_researcher.return_value = MagicMock()
     mock_writer.return_value = MagicMock()
@@ -37,7 +36,7 @@ def test_sdk_run(
 
     result = sdk.run(
         topic="Artificial Intelligence",
-        language="English"
+        language="English",
     )
 
     assert result == "SUCCESS"

@@ -1,16 +1,7 @@
 from crewai import Crew, Process
 
-from src.services.agents import (
-    create_researcher,
-    create_writer,
-    create_editor
-)
-
-from src.services.tasks import (
-    create_research_task,
-    create_writing_task,
-    create_review_task
-)
+from src.services.agents import create_editor, create_researcher, create_writer
+from src.services.tasks import create_research_task, create_review_task, create_writing_task
 
 
 class CrewPipelineSDK:
@@ -23,41 +14,41 @@ class CrewPipelineSDK:
         self,
         topic,
         language,
-        cover_sheet=None
+        cover_sheet=None,
     ):
         research_task = create_research_task(
-            self.researcher
+            self.researcher,
         )
 
         writing_task = create_writing_task(
             self.writer,
-            research_task
+            research_task,
         )
 
         review_task = create_review_task(
             self.editor,
-            writing_task
+            writing_task,
         )
 
         crew = Crew(
             agents=[
                 self.researcher,
                 self.writer,
-                self.editor
+                self.editor,
             ],
             tasks=[
                 research_task,
                 writing_task,
-                review_task
+                review_task,
             ],
             process=Process.sequential,
-            verbose=True
+            verbose=True,
         )
 
         return crew.kickoff(
             inputs={
                 "topic": topic,
                 "language": language,
-                "cover_sheet": cover_sheet or {}
-            }
+                "cover_sheet": cover_sheet or {},
+            },
         )

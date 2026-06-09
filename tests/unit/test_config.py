@@ -2,8 +2,7 @@ import json
 
 import pytest
 
-from src.shared.config import ConfigError
-from src.shared.config import load_config
+from src.shared.config import ConfigError, load_config
 
 
 def test_load_valid_config(tmp_path, monkeypatch):
@@ -16,9 +15,9 @@ def test_load_valid_config(tmp_path, monkeypatch):
         json.dumps(
             {
                 "version": "1.00",
-                "value": 123
-            }
-        )
+                "value": 123,
+            },
+        ),
     )
 
     monkeypatch.chdir(tmp_path)
@@ -42,9 +41,9 @@ def test_invalid_version(tmp_path, monkeypatch):
     config_file.write_text(
         json.dumps(
             {
-                "version": "2.00"
-            }
-        )
+                "version": "2.00",
+            },
+        ),
     )
 
     monkeypatch.chdir(tmp_path)

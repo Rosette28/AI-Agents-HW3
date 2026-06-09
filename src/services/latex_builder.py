@@ -77,17 +77,16 @@ LATEX_TEMPLATE = """
 """
 
 def generate_latex_document(topic: str, language: str, content: str, cover_sheet: dict) -> str:
-    """
-    Renders the LaTeX document using Jinja2, omitting any empty cover sheet fields.
+    """Renders the LaTeX document using Jinja2, omitting any empty cover sheet fields.
     """
     template = jinja2.Template(LATEX_TEMPLATE)
-    
+
     return template.render(
         topic=topic,
         language=language,
         content=content,
-        author=cover_sheet.get('author'),
-        course=cover_sheet.get('course'),
-        lecturer=cover_sheet.get('lecturer'),
-        date=cover_sheet.get('date')
+        author=cover_sheet.get("author"),
+        course=cover_sheet.get("course"),
+        lecturer=cover_sheet.get("lecturer"),
+        date=cover_sheet.get("date"),
     )

@@ -742,7 +742,7 @@ Code reliability is proven via TDD, minimum coverage of 85% is achieved, and Ruf
 
 **Priority:** Medium
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -764,7 +764,7 @@ tests/unit/
 
 **Priority:** Critical
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -781,7 +781,7 @@ Tests verify:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -797,7 +797,7 @@ Tests verify:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -815,7 +815,7 @@ Using mocked Crew components.
 
 **Priority:** Critical
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -837,7 +837,7 @@ Coverage report shows:
 
 **Priority:** High
 **Assignee:** Partner 2
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
