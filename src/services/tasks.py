@@ -2,44 +2,27 @@
 from crewai import Agent, Task
 
 
-def create_research_task(agent: Agent) -> Task:
-    """Create the task for gathering research and facts."""
+def create_research_task(agent: Agent, topic: str) -> Task:
+    """Initialize the research task."""
     return Task(
         description=(
-            "Research '{topic}'. Find at least 3 distinct, credible sources. "
-            "CRITICAL: You MUST use the 'BibTeX Appender' tool to save each source to the bibliography."
+            f"Research '{topic}'. "
+            "Provide a detailed summary. "
+            "Then list exactly 3 references. "
+            "Each reference must start with REF:"
         ),
-        expected_output="A detailed research document with saved BibTeX citations.",
+        expected_output="Summary plus REF lines.",
         agent=agent,
     )
 
-def create_writing_task(agent: Agent, research_task: Task) -> Task:
-    """Create the task for drafting the academic article."""
-    return Task(
-        description=(
-            "Using the research, write an exhaustive, highly detailed academic book on '{topic}'. "
-            "To meet the 15-page requirement, you must write at least 6 long chapters. "
-            "CRITICAL REQUIREMENTS: "
-            "1. Use the 'Dynamic Graph Generator' tool to create a graph based on your data. "
-            "2. Include a native LaTeX TikZ block diagram (`\\begin{tikzpicture}`). "
-            "3. Include a formatted data table. "
-            "4. Include a complex 'fancy formula' using `\\begin{equation}`. "
-            "5. CRITICAL: Write exactly ONE dedicated chapter that smoothly blends Hebrew and English (BiDi) to demonstrate RTL/LTR transitions."
-        ),
-        expected_output="A massive, highly detailed Markdown/LaTeX manuscript containing a graph, TikZ diagram, math, and a bilingual Hebrew/English chapter.",
-        agent=agent,
-        context=[research_task],
-    )
 
-def create_review_task(agent: Agent, writing_task: Task) -> Task:
-    """Create the task for reviewing and formatting the text."""
+def create_plan_task(agent: Agent, topic: str) -> Task:
+    """Initialize the outline planning task."""
     return Task(
         description=(
-            "Review the manuscript. Ensure the \\includegraphics for the graph is present. "
-            "Verify the TikZ syntax, the math formula, and ensure the BiDi Hebrew chapter is formatted correctly "
-            "according to your injected SKILL.md guidelines."
+            f"Create an 8 chapter plan for '{topic}'. "
+            "Output ONLY JSON."
         ),
-        expected_output="The final, flawless LaTeX-ready text string.",
+        expected_output="JSON array.",
         agent=agent,
-        context=[writing_task],
     )

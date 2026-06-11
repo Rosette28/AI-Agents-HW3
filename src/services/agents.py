@@ -1,42 +1,120 @@
+"""Agents module for defining the AI workforce."""
+
 import os
 
+import crewai.llms.cache as _crewai_cache
 from crewai import LLM, Agent
 from dotenv import load_dotenv
 
-from src.services.tools import append_bibtex_tool, generate_dynamic_graph_tool, web_search_tool
+from src.services.tools import web_search_tool
+
+_crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 load_dotenv()
-gemini_llm = LLM(model="gemini/gemini-2.5-flash", api_key=os.getenv("GEMINI_API_KEY"))
+
+
+def _build_llm(env_name: str, default: str) -> LLM:
+    return LLM(
+        model=os.getenv(env_name, default),
+    )
+
+
+research_llm = _build_llm(
+    "RESEARCH_MODEL",
+    os.getenv(
+        "ACTIVE_MODEL",
+        "groq/llama-3.3-70b-versatile",
+    ),
+)
+
+writer_llm = _build_llm(
+    "WRITER_MODEL",
+    os.getenv(
+        "ACTIVE_MODEL",
+        "groq/llama-3.3-70b-versatile",
+    ),
+)
+
+planner_llm = _build_llm(
+    "PLANNER_MODEL",
+    os.getenv(
+        "ACTIVE_MODEL",
+        "groq/llama-3.3-70b-versatile",
+    ),
+)
+
+summarizer_llm = _build_llm(
+    "SUMMARIZER_MODEL",
+    os.getenv(
+        "ACTIVE_MODEL",
+        "groq/llama-3.3-70b-versatile",
+    ),
+)
+
+editor_llm = _build_llm(
+    "EDITOR_MODEL",
+    os.getenv(
+        "ACTIVE_MODEL",
+        "groq/llama-3.3-70b-versatile",
+    ),
+)
+
 
 def create_researcher() -> Agent:
     return Agent(
-        role="Market Research Analyst",
-        goal="Find accurate facts on {topic}. Use the BibTeX Appender tool to save every source you find.",
-        backstory="You find credible sources and immediately save them to the bibliography using your tools.",
-        tools=[web_search_tool, append_bibtex_tool],
-        llm=gemini_llm,
+        role="Academic Research Analyst",
+        goal="Produce factual research and references.",
+        backstory="Expert academic researcher.",
+        tools=[web_search_tool],
+        llm=research_llm,
         verbose=True,
         allow_delegation=False,
     )
+
 
 def create_writer() -> Agent:
     return Agent(
-        role="Senior Technical Writer",
-        goal="Write a massive 15-page academic article in {language}. You must generate a graph using your tool.",
-        backstory="You are an expansive academic writer. You never write short summaries. You expand on every point to ensure the document reaches approximately 15 pages.",
-        tools=[generate_dynamic_graph_tool],
-        llm=gemini_llm,
+        role="Senior Academic Writer",
+        goal="Write coherent academic chapters.",
+        backstory="University textbook author.",
+        tools=[],
+        llm=writer_llm,
         verbose=True,
         allow_delegation=False,
     )
 
+
 def create_editor() -> Agent:
     return Agent(
-        role="Senior Editor",
-        goal="Format the output for LaTeX compilation based on your injected academic skills.",
-        backstory="You strictly enforce LaTeX syntax. You ensure TikZ block diagrams, tables, and complex math equations are perfectly formatted.",
-        llm=gemini_llm,
-        skills=["./skills"], # Appendix A: Injecting the Skill folder
+        role="LaTeX Editor",
+        goal="Review academic content and fix LaTeX issues.",
+        backstory="Expert LaTeX reviewer.",
+        tools=[],
+        llm=editor_llm,
+        verbose=True,
+        allow_delegation=False,
+    )
+
+
+def create_planner() -> Agent:
+    return Agent(
+        role="Academic Planner",
+        goal="Create chapter structures.",
+        backstory="Academic architect.",
+        tools=[],
+        llm=planner_llm,
+        verbose=True,
+        allow_delegation=False,
+    )
+
+
+def create_summarizer() -> Agent:
+    return Agent(
+        role="Context Summarizer",
+        goal="Compress context efficiently.",
+        backstory="Expert summarizer.",
+        tools=[],
+        llm=summarizer_llm,
         verbose=True,
         allow_delegation=False,
     )

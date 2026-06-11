@@ -867,7 +867,7 @@ The full pipeline completes, Markdown translates cleanly to LaTeX, and LuaLaTeX 
 
 **Priority:** Critical
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -888,7 +888,7 @@ Output contains:
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -906,7 +906,7 @@ Assets successfully referenced in LaTeX.
 
 **Priority:** Medium
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -929,7 +929,7 @@ E = mc^2
 
 **Priority:** Critical
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -955,7 +955,7 @@ Requirements:
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 
@@ -972,7 +972,7 @@ Manual inspection confirms:
 
 **Priority:** High
 **Assignee:** Partner 1
-**Status:** Not Started
+**Status:** Done
 
 ### Definition of Done
 

@@ -22,7 +22,6 @@ def web_search_tool(query: str) -> str:
     return gatekeeper.execute(_perform_network_search, query)
 
 @tool("Dynamic Graph Generator")
-@tool("Dynamic Graph Generator")
 def generate_dynamic_graph_tool(title: str, x_labels: str, y_values: str) -> str:
     """Generate a bar chart and save it.
 

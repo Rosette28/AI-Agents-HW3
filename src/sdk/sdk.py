@@ -1,54 +1,97 @@
-from crewai import Crew, Process
+"""SDK module for the CrewAI pipeline."""
+import logging
 
-from src.services.agents import create_editor, create_researcher, create_writer
-from src.services.tasks import create_research_task, create_review_task, create_writing_task
+from crewai import Task
+
+from src.sdk.bibliography import (
+    build_bibliography,
+    extract_references,
+)
+from src.sdk.chapter_writer import _WRITER_FALLBACK_MODELS, _execute_with_rate_limit_retry
+from src.sdk.pipeline_helpers import (
+    build_chapters,
+    edit_document,
+    write_document,
+)
+from src.services.agents import (
+    create_editor,
+    create_planner,
+    create_researcher,
+    create_summarizer,
+    create_writer,
+)
+
+logger = logging.getLogger(__name__)
 
 
 class CrewPipelineSDK:
-    def __init__(self):
+    """Core SDK for managing the document generation pipeline."""
+
+    def __init__(self) -> None:
+        """Initialize all required agents."""
         self.researcher = create_researcher()
+        self.planner = create_planner()
+        self.summarizer = create_summarizer()
         self.writer = create_writer()
         self.editor = create_editor()
 
     def run(
         self,
-        topic,
-        language,
-        cover_sheet=None,
-    ):
-        research_task = create_research_task(
-            self.researcher,
+        topic: str,
+        language: str,
+        cover_sheet: dict | None = None,
+    ) -> str:
+        """Run the end-to-end multi-agent pipeline."""
+        if cover_sheet:
+            logger.info("Cover sheet received.")
+
+        logger.info("Starting research phase...")
+
+        research_task = Task(
+            description=(
+                f"Research '{topic}'. "
+                "Provide a detailed summary. "
+                "Then list exactly 3 references. "
+                "Each reference must begin with REF:"
+            ),
+            expected_output="Summary and references.",
+            agent=self.researcher,
         )
 
-        writing_task = create_writing_task(
-            self.writer,
-            research_task,
+        research_output = _execute_with_rate_limit_retry(
+            research_task, self.researcher, fallback_models=_WRITER_FALLBACK_MODELS
         )
 
-        review_task = create_review_task(
+        logger.info("Planning outline...")
+
+        chapters = build_chapters(
+            self.planner,
+            topic,
+        )
+
+        logger.info("Writing chapters...")
+
+        full_content = write_document(
+            writer=self.writer,
+            summarizer=self.summarizer,
+            topic=topic,
+            language=language,
+            chapters=chapters,
+        )
+
+        logger.info("Running editor...")
+
+        final_content = edit_document(
             self.editor,
-            writing_task,
+            full_content,
         )
 
-        crew = Crew(
-            agents=[
-                self.researcher,
-                self.writer,
-                self.editor,
-            ],
-            tasks=[
-                research_task,
-                writing_task,
-                review_task,
-            ],
-            process=Process.sequential,
-            verbose=True,
+        refs = extract_references(
+            research_output,
         )
 
-        return crew.kickoff(
-            inputs={
-                "topic": topic,
-                "language": language,
-                "cover_sheet": cover_sheet or {},
-            },
+        final_content += build_bibliography(
+            refs,
         )
+
+        return final_content
